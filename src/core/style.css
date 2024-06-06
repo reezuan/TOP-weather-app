@@ -77,3 +77,32 @@ main {
 .weather-heading p {
     margin: 0;
 }
+
+.current-weather-highlights {
+    grid-area: 2 / 1 / 3 / 2;
+}
+
+.current-weather-details {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr 1fr 1fr;
+}
+
+.current-weather-details > div {
+    display: grid;
+    grid-template-columns: auto 1fr;
+    grid-template-rows: 1fr 1fr;
+}
+
+.current-weather-details > div > img {
+    width: 30px;
+    height: auto;
+
+    grid-area: 1 / 1 / 3 / 2;
+}
+
+.current-weather-details > div > p {
+    margin: 0;
+
+    grid-area: 1 / 2 / 2 / 3;
+}

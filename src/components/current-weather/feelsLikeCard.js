@@ -2,7 +2,6 @@ import Thermometer from "../../assets/thermometer.png";
 
 function feelsLikeCard() {
     const container = document.createElement("div");
-    container.classList.add("current-weather-details");
     
     // ----- ICON -----------------------------------------------------
     const icon = new Image();

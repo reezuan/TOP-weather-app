@@ -2,7 +2,6 @@ import Rain from "../../assets/rain.png";
 
 function chanceOfRainCard() {
     const container = document.createElement("div");
-    container.classList.add("current-weather-details");
     
     // ----- ICON -----------------------------------------------------
     const icon = new Image();

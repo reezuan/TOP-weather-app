@@ -2,7 +2,6 @@ import Compass from "../../assets/cardinal-points.png";
 
 function windDirectionCard() {
     const container = document.createElement("div");
-    container.classList.add("current-weather-details");
     
     // ----- ICON -----------------------------------------------------
     const icon = new Image();

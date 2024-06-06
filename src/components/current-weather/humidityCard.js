@@ -2,7 +2,6 @@ import Humidity from "../../assets/humidity.png";
 
 function humidityCard() {
     const container = document.createElement("div");
-    container.classList.add("current-weather-details");
     
     // ----- ICON -----------------------------------------------------
     const icon = new Image();

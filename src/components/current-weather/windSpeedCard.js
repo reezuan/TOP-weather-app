@@ -2,7 +2,6 @@ import WindSpeed from "../../assets/wind-speed.png";
 
 function windSpeedCard() {
     const container = document.createElement("div");
-    container.classList.add("current-weather-details");
     
     // ----- ICON -----------------------------------------------------
     const icon = new Image();

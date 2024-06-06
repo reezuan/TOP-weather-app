@@ -2,7 +2,6 @@ import SunRays from "../../assets/sun-rays.png";
 
 function UVCard() {
     const container = document.createElement("div");
-    container.classList.add("current-weather-details");
     
     // ----- ICON -----------------------------------------------------
     const icon = new Image();
