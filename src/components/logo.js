@@ -1,8 +1,12 @@
+import SiteLogo from "../assets/site-logo.png";
+
 function logo() {
     const logo = document.createElement("div");
-    const logoImg = document.createElement("img");
-
     logo.classList.add("logo");
+    
+    const logoImg = new Image();
+    logoImg.src = SiteLogo;
+    logoImg.className = "site-logo";
 
     logo.appendChild(logoImg);
 
