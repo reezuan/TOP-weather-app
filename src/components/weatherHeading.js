@@ -17,15 +17,13 @@ function weatherHeading() {
 
     // Date/time
     const dateTime = document.createElement("p");
-    const dayOfWeek = document.createElement("span");
     const date = document.createElement("span");
     const timeNow = document.createElement("span");
 
-    dayOfWeek.setAttribute("data-day-of-week", "");
-    date.setAttribute("data-date", "");
+    date.setAttribute("data-current-date", "");
     timeNow.setAttribute("data-time-now", "");
 
-    dateTime.append(dayOfWeek, ", ", date, " | ", timeNow);
+    dateTime.append(date, " | ", timeNow);
 
     weatherHeading.appendChild(location);
     weatherHeading.appendChild(dateTime);

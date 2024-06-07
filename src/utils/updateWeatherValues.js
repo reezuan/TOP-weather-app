@@ -1,3 +1,5 @@
+import { formatDate } from "./formatDate.js";
+
 function updateWeatherValues(data) {
     console.log(data);
     
@@ -8,43 +10,11 @@ function updateWeatherValues(data) {
     const country = document.querySelector("[data-country]");
     country.textContent = data.location.country;
 
-    // Set day, date & time
+    // Set current date
     const dateTimeNow = new Date(data.location.localtime);
-    const months = ["January", "February", "March", "April", "May",
-        "June", "July", "August", "September", "October", "November", "December"];
     
-    const dayOfWeek = document.querySelector("[data-day-of-week]");
-    
-    // Set day of week
-    switch (dateTimeNow.getDay()) {
-        case 0:
-            dayOfWeek.textContent = "Sunday";
-            break;
-        case 1:
-            dayOfWeek.textContent = "Monday";
-            break;
-        case 2:
-            dayOfWeek.textContent = "Tuesday";
-            break;
-        case 3:
-            dayOfWeek.textContent = "Wednesday";
-            break;
-        case 4:
-            dayOfWeek.textContent = "Thursday";
-            break;
-        case 5:
-            dayOfWeek.textContent = "Friday";
-            break;
-        case 6:
-            dayOfWeek.textContent = "Saturday";
-            break;
-        default:
-            dayOfWeek.textContent = "";
-    }
-
-    // Set date
-    const date = document.querySelector("[data-date]");
-    date.textContent = `${dateTimeNow.getDate()} ${months[dateTimeNow.getMonth()]} ${dateTimeNow.getFullYear()}`
+    const date = document.querySelector("[data-current-date]");
+    date.textContent = formatDate(dateTimeNow);
 
     // Set time
     const time = document.querySelector("[data-time-now]");
