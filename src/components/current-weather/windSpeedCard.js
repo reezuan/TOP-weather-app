@@ -16,6 +16,8 @@ function windSpeedCard() {
 
     const data = document.createElement("span");
     data.setAttribute("data-wind-speed", "");
+    data.setAttribute("data-speed-mph", "");
+    data.setAttribute("data-speed-kph", "");
 
     const unit = document.createElement("span");
     unit.setAttribute("data-speed-unit", "");

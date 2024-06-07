@@ -1,4 +1,5 @@
 import { convertTemperatureValues } from "./convertTemperatureValues.js";
+import { convertSpeedValues } from "./convertSpeedValues.js";
 
 function setImperialUnits() {
     const currentTemperatureUnit = localStorage.getItem("temperatureUnit");
@@ -22,7 +23,8 @@ function setImperialUnits() {
         symbol.textContent = "mph";
     });
 
-    convertTemperatureValues(currentTemperatureUnit, currentSpeedUnit);
+    convertTemperatureValues(currentTemperatureUnit, newTemperatureUnit);
+    convertSpeedValues(currentSpeedUnit, newSpeedUnit);
 }
 
 export { setImperialUnits };

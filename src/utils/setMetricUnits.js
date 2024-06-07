@@ -1,11 +1,12 @@
 import { convertTemperatureValues } from "./convertTemperatureValues.js";
+import { convertSpeedValues } from "./convertSpeedValues.js";
 
 function setMetricUnits() {
     const currentTemperatureUnit = localStorage.getItem("temperatureUnit");
     const currentSpeedUnit = localStorage.getItem("speedUnit");
     
     const newTemperatureUnit = "celsius";
-    const newSpeedUnit = "km/h";
+    const newSpeedUnit = "kph";
 
     localStorage.setItem("temperatureUnit", newTemperatureUnit);
     localStorage.setItem("speedUnit", newSpeedUnit);
@@ -22,7 +23,8 @@ function setMetricUnits() {
         symbol.textContent = "km/h";
     });
 
-    convertTemperatureValues(currentTemperatureUnit, currentSpeedUnit);
+    convertTemperatureValues(currentTemperatureUnit, newTemperatureUnit);
+    convertSpeedValues(currentSpeedUnit, newSpeedUnit);
 }
 
 export { setMetricUnits };
