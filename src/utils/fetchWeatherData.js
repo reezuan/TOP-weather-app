@@ -1,8 +1,8 @@
-import { buildRealtimeRequestUrl } from "../api-functions/buildRealtimeRequestUrl.js";
+import { buildForecastRequestUrl } from "../api-functions/buildForecastRequestUrl.js";
 
-async function fetchCurrentWeather(key, city) {
+async function fetchWeatherData(query, key = "1e59001d3205403fa8a174857242905", numberOfDays = 7) {
     try {
-        const requestUrl = buildRealtimeRequestUrl(key, city);
+        const requestUrl = buildForecastRequestUrl(key, query, numberOfDays);
         const response = await fetch(requestUrl, {mode: "cors"});
         const responseJSON = await response.json();
 
@@ -16,4 +16,4 @@ async function fetchCurrentWeather(key, city) {
     }
 };
 
-export { fetchCurrentWeather };
+export { fetchWeatherData };

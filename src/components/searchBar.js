@@ -1,6 +1,6 @@
-import { fetchForecastWeather } from "../utils/fetchForecastWeather.js";
+import { fetchWeatherData } from "../utils/fetchWeatherData.js";
 import { handleError } from "../utils/handleError.js";
-import { updatePage } from "../utils/updatePage.js";
+import { updateWeatherValues } from "../utils/updateWeatherValues.js";
 
 function searchBar() {
     const searchBar = document.createElement("div");
@@ -15,8 +15,8 @@ function searchBar() {
     form.addEventListener("submit", (event) => {
         event.preventDefault();
 
-        fetchForecastWeather(input.value)
-            .then(data => updatePage(data))
+        fetchWeatherData(input.value)
+            .then(data => updateWeatherValues(data))
             .catch(err => handleError(err));
     });
 
