@@ -1,8 +1,8 @@
 import { buildForecastRequestUrl } from "../api-functions/buildForecastRequestUrl.js";
 
-async function fetchForecastWeather(key, city, numberOfDays) {
+async function fetchForecastWeather(query, key = "1e59001d3205403fa8a174857242905", numberOfDays = 7) {
     try {
-        const requestUrl = buildForecastRequestUrl(key, city, numberOfDays);
+        const requestUrl = buildForecastRequestUrl(key, query, numberOfDays);
         const response = await fetch(requestUrl, {mode: "cors"});
         const responseJSON = await response.json();
 

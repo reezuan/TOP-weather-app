@@ -14,12 +14,20 @@ function weatherOverview() {
         mutations.forEach(mutation => {
             if (mutation.type === "attributes") {
                 console.log("Day/night changed");
+
+                // Disconnect observer to prevent infinite loop
+                observer.disconnect();
                 
                 if (icon.getAttribute("data-is-day") === "true") {
                     icon.src = Sun;
                 } else {
                     icon.src = Moon;
                 }
+
+                // Reconnect observer
+                observer.observe(icon, {
+                    attributes: true
+                });
             }
         });
     });
