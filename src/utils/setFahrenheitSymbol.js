@@ -1,11 +1,18 @@
-function setFahrenheitSymbol() {
-    const temperatureSymbols = document.querySelectorAll("[data-temperature-unit]");
+import { convertTemperatureValues } from "./convertTemperatureValues.js";
 
+function setFahrenheitSymbol() {
+    const currentUnit = localStorage.getItem("temperatureUnit");
+    const newUnit = "fahrenheit";
+
+    localStorage.setItem("temperatureUnit", newUnit);
+
+    const temperatureSymbols = document.querySelectorAll("[data-temperature-unit]");
     temperatureSymbols.forEach(symbol => {
-        localStorage.setItem("temperatureUnit", "fahrenheit");
-        symbol.dataset.temperatureUnit = "fahrenheit";
+        symbol.dataset.temperatureUnit = newUnit;
         symbol.textContent = "°F";
     });
+
+    convertTemperatureValues(currentUnit, newUnit);
 }
 
 export { setFahrenheitSymbol };

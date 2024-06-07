@@ -16,6 +16,8 @@ function feelsLikeCard() {
 
     const data = document.createElement("span");
     data.setAttribute("data-feels-like", "");
+    data.setAttribute("data-temperature-fahrenheit", "");
+    data.setAttribute("data-temperature-celsius", "");
 
     const unit = document.createElement("span");
     unit.setAttribute("data-temperature-unit", "");

@@ -1,11 +1,18 @@
-function setCelsiusSymbol() {
-    const temperatureSymbols = document.querySelectorAll("[data-temperature-unit]");
+import { convertTemperatureValues } from "./convertTemperatureValues.js";
 
+function setCelsiusSymbol() {
+    const currentUnit = localStorage.getItem("temperatureUnit");
+    const newUnit = "celsius";
+
+    localStorage.setItem("temperatureUnit", newUnit);
+    
+    const temperatureSymbols = document.querySelectorAll("[data-temperature-unit]");
     temperatureSymbols.forEach(symbol => {
-        localStorage.setItem("temperatureUnit", "celsius");
-        symbol.dataset.temperatureUnit = "celsius";
+        symbol.dataset.temperatureUnit = newUnit;
         symbol.textContent = "°C";
     });
+
+    convertTemperatureValues(currentUnit, newUnit);
 }
 
 export { setCelsiusSymbol };

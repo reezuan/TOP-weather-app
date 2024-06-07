@@ -39,6 +39,8 @@ function weatherOverview() {
     // ----- CURRENT TEMPERATURE --------------------------------------
     const temperature = document.createElement("span");
     temperature.setAttribute("data-current-temp", "");
+    temperature.setAttribute("data-temperature-fahrenheit", "");
+    temperature.setAttribute("data-temperature-celsius", "");
 
     const unit = document.createElement("span");
     unit.setAttribute("data-temperature-unit", "");
