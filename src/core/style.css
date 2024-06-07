@@ -53,7 +53,7 @@ header > div:last-child {
 /* ---------- MAIN ---------- */
 
 main {
-    width: 800px;
+    width: 1000px;
     text-align: center;
     
     display: grid;
@@ -78,8 +78,27 @@ main {
     margin: 0;
 }
 
-.current-weather-highlights {
+.current-weather-overview {
     grid-area: 2 / 1 / 3 / 2;
+
+    display: grid;
+    grid-template-columns: auto 1fr;
+    grid-template-rows: 1fr 1fr;
+}
+
+.current-weather-overview > img {
+    width: 80px;
+    height: auto;
+
+    grid-area: 1 / 1 / 2 / 2;
+}
+
+.current-weather-overview > p:nth-child(2) {
+    grid-area: 1 / 2 / 2 / 3;
+}
+
+.current-weather-overview > p:last-child {
+    grid-area: 2 / 2 / 3 / 3;
 }
 
 .current-weather-details {
