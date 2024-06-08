@@ -6,6 +6,7 @@ import { humidityCard } from "./current-weather/humidityCard.js";
 import { UVCard } from "./current-weather/UVCard.js";
 import { windDirectionCard } from "./current-weather/windDirectionCard.js";
 import { windSpeedCard } from "./current-weather/windSpeedCard.js";
+import { weeklyForecastSection } from "./weeklyForecastSection.js";
 
 function mainWeatherSection() {
     const weatherSection = document.createElement("main");
@@ -25,6 +26,7 @@ function mainWeatherSection() {
     weatherSection.appendChild(weatherHeading());
     weatherSection.appendChild(weatherOverview());
     weatherSection.appendChild(weatherDetails);
+    weatherSection.appendChild(weeklyForecastSection());
 
     return weatherSection;
 }

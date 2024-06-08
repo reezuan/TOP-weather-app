@@ -125,3 +125,21 @@ main {
 
     grid-area: 1 / 2 / 2 / 3;
 }
+
+.weekly-forecast {
+    display: flex;
+    flex-direction: column;
+}
+
+.forecast-item {
+    display: flex;
+}
+
+.rain-forecast {
+    display: flex;
+}
+
+.rain-forecast img {
+    width: 40px;
+    height: auto;
+}
