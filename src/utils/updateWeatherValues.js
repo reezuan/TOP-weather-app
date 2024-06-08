@@ -2,6 +2,7 @@ import { formatDate } from "./formatDate.js";
 
 function updateWeatherValues(data) {
     console.log(data);
+    const measurementSystem = localStorage.getItem("measurementSystem");
     
     // ----- SET LOCATION ---------------------------------------------
     const city = document.querySelector("[data-city]");
@@ -25,20 +26,14 @@ function updateWeatherValues(data) {
     const timeOfDayIcon = document.querySelector("[data-is-day]");
     timeOfDayIcon.dataset.isDay = data.current.is_day === 1 ? "true" : "false";
     
-    // ----- SET CURRENT TEMPERATURE ----------------------------------
+    // ----- SET CURRENT & 'FEELS LIKE' TEMPERATURE ----------------------------------
     const currentTemp = document.querySelector("[data-current-temp]");
-    currentTemp.dataset.temperatureFahrenheit = data.current.temp_f;
-    currentTemp.dataset.temperatureCelsius = data.current.temp_c;
-
-    // ----- SET 'FEELS LIKE' TEMPERATURE -----------------------------
     const feelsLikeTemp = document.querySelector("[data-feels-like]");
-    feelsLikeTemp.dataset.temperatureFahrenheit = data.current.feelslike_f;
-    feelsLikeTemp.dataset.temperatureCelsius = data.current.feelslike_c;
 
-    if (localStorage.getItem("temperatureUnit") === "celsius") {
+    if (measurementSystem === "metric") {
         currentTemp.textContent = data.current.temp_c;
         feelsLikeTemp.textContent = data.current.feelslike_c;
-    } else if (localStorage.getItem("temperatureUnit") === "fahrenheit") {
+    } else if (measurementSystem === "imperial") {
         currentTemp.textContent = data.current.temp_f;
         feelsLikeTemp.textContent = data.current.feelslike_f;
     }
@@ -57,12 +52,10 @@ function updateWeatherValues(data) {
 
     // ----- SET WIND SPEED -------------------------------------------
     const windSpeed = document.querySelector("[data-wind-speed]");
-    windSpeed.dataset.speedMph = data.current.wind_mph;
-    windSpeed.dataset.speedKph = data.current.wind_kph;
 
-    if (localStorage.getItem("speedUnit") === "kph") {
+    if (measurementSystem === "metric") {
         windSpeed.textContent = data.current.wind_kph;
-    } else if (localStorage.getItem("speedUnit") === "mph") {
+    } else if (measurementSystem === "imperial") {
         windSpeed.textContent = data.current.wind_mph;
     }
 
@@ -82,10 +75,10 @@ function updateWeatherValues(data) {
         const forecastMaxTemp = document.querySelector(`[data-forecast-max-temp][data-forecast-day="${i}"]`);
         const forecastMinTemp = document.querySelector(`[data-forecast-min-temp][data-forecast-day="${i}"]`);
 
-        if (localStorage.getItem("temperatureUnit") === "celsius") {
+        if (measurementSystem === "metric") {
             forecastMaxTemp.textContent = data.forecast.forecastday[i].day.maxtemp_c;
             forecastMinTemp.textContent = data.forecast.forecastday[i].day.mintemp_c;
-        } else if (localStorage.getItem("temperatureUnit") === "fahrenheit") {
+        } else if (measurementSystem === "imperial") {
             forecastMaxTemp.textContent = data.forecast.forecastday[i].day.maxtemp_f;
             forecastMinTemp.textContent = data.forecast.forecastday[i].day.mintemp_f;
         }
@@ -93,6 +86,26 @@ function updateWeatherValues(data) {
         const forecastRainChance = document.querySelector(`[data-forecast-rain][data-forecast-day="${i}"]`);
         forecastRainChance.textContent = data.forecast.forecastday[i].day.daily_chance_of_rain;
     }
+
+    // ----- SET ALL TEMPERATURE & SPEED UNITS ------------------------
+    const temperatureSymbols = document.querySelectorAll("[data-temperature-unit]");
+    const speedSymbols = document.querySelectorAll("[data-speed-unit]");
+
+    temperatureSymbols.forEach(symbol => {
+        if (measurementSystem === "metric") {
+            symbol.textContent = "°C";
+        } else if (measurementSystem === "imperial") {
+            symbol.textContent = "°F";
+        }
+    });
+    
+    speedSymbols.forEach(symbol => {
+        if (measurementSystem === "metric") {
+            symbol.textContent = "km/h";
+        } else if (measurementSystem === "imperial") {
+            symbol.textContent = "mph";
+        }
+    });
 };
 
 export { updateWeatherValues };

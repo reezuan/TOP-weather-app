@@ -13,8 +13,6 @@ function weatherOverview() {
     const observer = new MutationObserver(mutations => {
         mutations.forEach(mutation => {
             if (mutation.type === "attributes") {
-                console.log("Day/night changed");
-
                 // Disconnect observer to prevent infinite loop
                 observer.disconnect();
                 
@@ -36,7 +34,7 @@ function weatherOverview() {
         attributes: true
     });
     
-    // ----- CURRENT TEMPERATURE --------------------------------------
+    // ----- CURRENT TEMPERATURE & GENERAL FORECAST -------------------
     const temperature = document.createElement("span");
     temperature.setAttribute("data-current-temp", "");
     temperature.setAttribute("data-temperature-fahrenheit", "");
@@ -48,13 +46,15 @@ function weatherOverview() {
     const currentTemp = document.createElement("p");
     currentTemp.append(temperature, unit);
     
-    // ----- GENERAL FORECAST -----------------------------------------
     const generalForecast = document.createElement("p");
     generalForecast.setAttribute("data-general-forecast", "");
 
+    const overview = document.createElement("div");
+    overview.appendChild(currentTemp);
+    overview.appendChild(generalForecast);
+
     container.appendChild(icon);
-    container.appendChild(currentTemp);
-    container.appendChild(generalForecast);
+    container.appendChild(overview);
 
     return container;
 }
