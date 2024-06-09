@@ -1,4 +1,4 @@
-import SiteLogo from "../assets/site-logo.png";
+import SiteLogo from "../assets/cat-logo-white.png";
 
 function logo() {
     const logo = document.createElement("div");

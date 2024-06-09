@@ -9,6 +9,8 @@ function searchBar() {
 
     searchBar.classList.add("search-bar");
 
+    input.setAttribute("placeholder", "Search city");
+
     form.appendChild(input);
     searchBar.appendChild(form);
 
