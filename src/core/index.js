@@ -4,10 +4,11 @@ import { searchBar } from "../components/searchBar.js";
 import { toggleMetric } from "../components/toggleMetric.js";
 import { toggleImperial } from "../components/toggleImperial.js";
 import { mainWeatherSection } from "../components/mainWeatherSection.js";
+import { updateWeatherValues } from "../utils/updateWeatherValues.js";
+import { fetchWeatherData } from "../utils/fetchWeatherData.js";
+import { handleError } from "../utils/handleError.js";
 
 (() => {
-    const API_KEY = "1e59001d3205403fa8a174857242905";
-
     const body = document.querySelector("body");
     
     const header = document.createElement("header");
@@ -19,6 +20,16 @@ import { mainWeatherSection } from "../components/mainWeatherSection.js";
     header.appendChild(toggleButtonsContainer);
     
     const footer = document.createElement("footer");
+
+    if (!localStorage.getItem("lastSearch")) {
+        fetchWeatherData("Singapore")
+            .then(data => updateWeatherValues(data))
+            .catch(err => handleError(err));
+    } else {
+        fetchWeatherData(localStorage.getItem("lastSearch"))
+            .then(data => updateWeatherValues(data))
+            .catch(err => handleError(err));
+    }
 
     body.appendChild(header);
     body.appendChild(mainWeatherSection());
