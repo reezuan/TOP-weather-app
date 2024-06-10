@@ -64,6 +64,33 @@ main {
     column-gap: 40px;
 }
 
+main.hidden {
+    display: none;
+}
+
+#loading {
+    width: 60px;
+    height: 60px;
+    border: #f3f3f3 solid 5px;
+    border-top: #9c41f2 solid 6px;
+    border-radius: 100%;
+    margin: auto;
+    display: none;
+    animation: spin 1s infinite linear;
+}
+
+#loading.display {
+    display: block;
+}
+
+@keyframes spin {
+    from {
+        transform: rotate(0deg);
+    } to {
+        transform: rotate(360deg);
+    }
+}
+
 /* ---------- HEADER ---------- */
 
 header {

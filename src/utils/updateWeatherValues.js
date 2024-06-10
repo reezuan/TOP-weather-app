@@ -1,4 +1,6 @@
 import { formatDate } from "./formatDate.js";
+import { hideLoader } from "./hideLoader.js";
+import { showMainContent } from "./showMainContent.js";
 
 function updateWeatherValues(data) {
     console.log(data);
@@ -106,6 +108,11 @@ function updateWeatherValues(data) {
             symbol.textContent = "mph";
         }
     });
+
+    // ----- HIDE LOADER & DISPLAY CONTENT AGAIN -------------------------------
+
+    hideLoader();
+    showMainContent();
 };
 
 export { updateWeatherValues };

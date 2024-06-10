@@ -7,6 +7,7 @@ import { mainWeatherSection } from "../components/mainWeatherSection.js";
 import { updateWeatherValues } from "../utils/updateWeatherValues.js";
 import { fetchWeatherData } from "../utils/fetchWeatherData.js";
 import { handleError } from "../utils/handleError.js";
+import { loadingAnimation } from "../components/loadingAnimation.js";
 
 (() => {
     const body = document.querySelector("body");
@@ -21,6 +22,11 @@ import { handleError } from "../utils/handleError.js";
     
     const footer = document.createElement("footer");
 
+    body.appendChild(header);
+    body.appendChild(mainWeatherSection());
+    body.appendChild(loadingAnimation());
+    body.appendChild(footer);
+
     if (!localStorage.getItem("lastSearch")) {
         fetchWeatherData("Singapore")
             .then(data => updateWeatherValues(data))
@@ -30,8 +36,4 @@ import { handleError } from "../utils/handleError.js";
             .then(data => updateWeatherValues(data))
             .catch(err => handleError(err));
     }
-
-    body.appendChild(header);
-    body.appendChild(mainWeatherSection());
-    body.appendChild(footer);
 })();
