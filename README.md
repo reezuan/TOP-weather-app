@@ -1,2 +1,2 @@
-# TOP-weather-app
-Building a simple weather website.
+# The Weather Cat
+A simple weather app, built by yours truly.
