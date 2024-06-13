@@ -4,7 +4,7 @@ import { hideLoader } from "./hideLoader.js";
 import { showMainContent } from "./showMainContent.js";
 import { hideMainContent } from "./hideMainContent.js";
 
-async function fetchWeatherData(query, key = "1e59001d3205403fa8a174857242905", numberOfDays = 8) {
+async function fetchWeatherData(query, key = "de15c36e45774dabab033138241306", numberOfDays = 8) {
     try {
         displayLoader();
         hideMainContent();

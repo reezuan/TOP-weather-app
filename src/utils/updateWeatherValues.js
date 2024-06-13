@@ -70,7 +70,7 @@ function updateWeatherValues(data) {
     UVIndex.textContent = data.current.uv;
 
     // ----- SET WEEKLY FORECAST --------------------------------------
-    for (let i = 1; i <= 7; i++) {
+    for (let i = 1; i < data.forecast.forecastday.length; i++) {
         const forecastDate = document.querySelector(`[data-forecast-date][data-forecast-day="${i}"]`);
         forecastDate.textContent = formatDate(new Date(data.forecast.forecastday[i].date));
         
