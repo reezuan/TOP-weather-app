@@ -8,8 +8,13 @@ import { updateWeatherValues } from "../utils/updateWeatherValues.js";
 import { fetchWeatherData } from "../utils/fetchWeatherData.js";
 import { handleError } from "../utils/handleError.js";
 import { loadingAnimation } from "../components/loadingAnimation.js";
+import { setDefaults } from "../utils/setDefaults.js";
 
 (() => {
+    // Set default search & measurement system if user visits for the first time.
+    setDefaults();
+
+    // Construct webpage.
     const body = document.querySelector("body");
     
     const header = document.createElement("header");
@@ -27,13 +32,8 @@ import { loadingAnimation } from "../components/loadingAnimation.js";
     body.appendChild(loadingAnimation());
     body.appendChild(footer);
 
-    if (!localStorage.getItem("lastSearch")) {
-        fetchWeatherData("Singapore")
-            .then(data => updateWeatherValues(data))
-            .catch(err => handleError(err));
-    } else {
-        fetchWeatherData(localStorage.getItem("lastSearch"))
-            .then(data => updateWeatherValues(data))
-            .catch(err => handleError(err));
-    }
+    // Populate page with weather data.
+    fetchWeatherData(localStorage.getItem("lastSearch"))
+        .then(data => updateWeatherValues(data))
+        .catch(err => handleError(err));
 })();
